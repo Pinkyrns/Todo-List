@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: 98vw;
+            height: 98vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        form .Write-text {
+            width: 40rem;
+            height: 2rem;
+        }
+
+        form input::placeholder {
+            font-size: 1rem;
+            color: black;
+            font-weight: 700;
+            padding-left: 0.7rem;
+        }
+
+        .Write-text {
+            font-size: 1.4rem;
+            color: black;
+            font-weight: 600;
+            padding-left: 0.7rem;
+        }
+
+        form .submit {
+            width: 6rem;
+            height: 2rem;
+            background: rgb(17, 204, 237);
+            border: none;
+            color: rgb(4, 4, 39);
+            font-weight: 800;
+        }
+
+        .ul-todo {
+            list-style: none;
+        }
+
+        .ul-todo li {
+            border: 2px solid;
+            width: 47rem;
+            height: 2rem;
+            color: rgb(52, 109, 159);
+            background: rgb(202, 199, 194);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: black;
+            font-weight: 600;
+        }
+
+        .todo-btn {
+            width: 12rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .todo-btn button {
+            width: 5rem;
+            height: 1.5rem;
+            border-radius: 3px;
+            background: rgb(15, 164, 239);
+            color: rgb(244, 243, 234);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <form action="">
+            <input type="text" placeholder="Write some Text....." class="Write-text">
+            <input type="submit" value="ADDED" class="submit">
+        </form>
+        <ul class="ul-todo">
+            <li>
+                <span class="text">Update</span>
+                <div class="todo-btn">
+                    <button class="button done">Done</button>
+                    <button class="button remove">Remove</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    const Form = document.querySelector('form')
+    const writeText = document.querySelector("form input[type='text']");
+    // const Add = document.querySelector(".submit");
+    const Done = document.querySelector(".done");
+    const Remove = document.querySelector(".remove");
+    const Ull = document.querySelector(".ul-todo")
+
+    Form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const Value = writeText.value;
+        const newList = document.createElement('li');
+        const newListDetails = `<span class="text">${Value}</span>
+                <div class="todo-btn">
+                    <button class="button done">Done</button>
+                    <button class="button remove">Remove</button>
+                </div>`;
+        newList.innerHTML = newListDetails;
+        Ull.append(newList);
+        writeText.value = "";
+
+    });
+
+    Ull.addEventListener('click', function (e) {
+        if (e.target.classList.contains("done")) {
+            const Lispan = e.target.parentNode.previousElementSibling;
+            Lispan.style.textDecoration = "line-through";
+        }
+        if (e.target.classList.contains("remove")) {
+            const Targetedli = e.target.parentNode.parentNode;
+            Targetedli.remove();
+        }
+    })
+</script>
+
+</html>
