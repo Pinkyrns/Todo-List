@@ -5,26 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Guessing Game</title>
+    <title>TodoList</title>
+    <link rel="stylesheet" href="index.css">
     <script src="Index.js" defer></script>
-    <link rel="stylesheet" href="Index.css">
 </head>
 
 <body>
-    <div class="Game">
-        <h1>Number Guessing Game</h1>
-        <span>Try and Guess a random number between 1 and 100.</span>
-        <span>You have 10 attempts to guess the right number.</span>
+    <div class="main">
         <form action="">
-            <label for="guessField" id="guess">Guess a Number</label>
-            <input type="text" id="guessField">
-            <input type="submit" id="submit" value="Submit Guess">
+            <input type="text" placeholder="Write some Text....." class="Write-text">
+            <input type="submit" value="ADDED" class="submit">
         </form>
-        <div class="resultPress">
-            <p>Previous Guesses:<span class="guesses"></span></p>
-            <p>Guesses Remaining:<span class="lastResult"> 10</span></p>
-            <p class="lowOrHi"></p>
-        </div>
+        <ul class="ul-todo">
+            <li>
+                <span class="text">Update</span>
+                <div class="todo-btn">
+                    <button class="button done">Done</button>
+                    <button class="button remove">Remove</button>
+                </div>
+            </li>
+        </ul>
     </div>
 </body>
 
